@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: `https://real-estate-app-backend-five.vercel.app/`,
+  baseURL: `https://real-estate-app-backend-iota.vercel.app/`,
 });
 
 // Add token automatically
