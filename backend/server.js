@@ -13,7 +13,23 @@ const app = express();
 await connectDB();
 
 // Middlewares
-app.use(cors({ origin: process.env.CORS_ORIGIN?.split(",") || "*" }));
+const allowedOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(",")
+  : ["*"];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
 app.use(express.json({ limit: "5mb" })); // slightly bigger limit for images
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
