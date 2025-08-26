@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌌 Starfield Background */
+#stars, #stars2, #stars3 {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#stars:after, #stars2:after, #stars3:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 
+    1000px 200px #fff,
+    300px 500px #fff,
+    700px 800px #fff,
+    1200px 900px #fff,
+    500px 1200px #fff,
+    900px 1400px #fff;
+}
+
+/* Different speeds for parallax */
+#stars {
+  animation: moveStars 50s linear infinite;
+}
+#stars2 {
+  animation: moveStars 100s linear infinite;
+}
+#stars3 {
+  animation: moveStars 150s linear infinite;
+}
+
+@keyframes moveStars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); }
+}
+
+/* 🫧 Bubble Animation */
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  animation: rise linear infinite;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50vh) scale(1.2);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.8);
+    opacity: 0;
+  }
+}
