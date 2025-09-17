@@ -23,7 +23,10 @@ export default function Home() {
           hasShownToast.current = true;
         }
       } catch (error) {
-        console.error("Error fetching properties:", error);
+        console.error(
+          "Error fetching properties:",
+          error.response?.data || error.message
+        );
         toast.error("Failed to load properties. Please try again later.");
       }
     };
